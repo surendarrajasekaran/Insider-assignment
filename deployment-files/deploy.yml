@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployapp
+  namespace: kube-system
+  labels:
+    app: nodeapp
+spec:
+  replicas: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3       # how many pods we can add at a time
+      maxUnavailable: 7  
+  selector:
+    matchLabels:
+      app: nodeapp
+  template:
+    metadata:
+      labels:
+        app: nodeapp
+    spec:
+      containers:
+      - name: nodeapp
+        image: 167947914732.dkr.ecr.us-west-2.amazonaws.com/nodejs-test:latest
+        ports:
+        - containerPort: 80
+        resources:
+          limits: 
+            cpu: 250m 
+            memory: 320Mi
+      priorityClassName: high-priority
