@@ -54,6 +54,6 @@ resource "aws_eks_cluster" "aws_eks" {
 
   tags = {
     Owner       = "surendar"
-    Description = "Paytm insider Assignment"
+    Description = "insider"
   }
 }
