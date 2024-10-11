@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: serviceapp
   namespace: kube-system
-  # namespace: "pie"
 spec:
   ports:
     - port: 3000
